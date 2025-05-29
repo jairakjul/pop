@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controllers/login_controller.dart';
+
+class LoginView extends GetView<LoginController> {
+  const LoginView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Login')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: controller.usernameController,
+              decoration: const InputDecoration(labelText: 'Username'),
+            ),
+            TextField(
+              controller: controller.passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: controller.login,
+              child: const Text('Login'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
